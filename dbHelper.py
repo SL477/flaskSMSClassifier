@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+import json
 
 def sql_connection():
     """
@@ -52,3 +53,13 @@ def insertDataIntoMessages(con, msgString, typeBool):
     cursor = con.cursor()
     cursor.execute("INSERT INTO messages (msg, type) VALUES (?,?)", (msgString, typeBool))
     con.commit()
+
+def getAllData():
+    """
+    Get all of the data from the database
+    """
+    with sql_connection() as con:
+        cursor = con.cursor()
+        cursor.execute("SELECT msg.id, msg.msg, msg.type, t.desc FROM messages msg JOIN types t ON msg.type = t.id")
+        data = cursor.fetchall()
+        return json.dumps(data)
