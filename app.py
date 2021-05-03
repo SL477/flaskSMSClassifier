@@ -28,16 +28,20 @@ def getJS():
 
 @app.route('/classifymessage', methods=["POST"])
 def classify_text_message():
-    #request_data = request.get_json(force = True)
-    #print("request_data",request_data)
-    #msg = request_data['msg']
-    #msg = request.json.get('msg')
-    #print("msg", msg)
     msg = request.form.get('msg')
-    print("msg", msg)
-    #return json.dumps(str(predict_message(msg)))
-    #return json.dumps(predict_message(msg))
     return jsonify(predict_message(msg))
+
+@app.route('/addtodb', methods=["POST"])
+def addToDB():
+    """
+    This is to insert into the database
+    """
+    msg = request.form.get('msg')
+    typeStr = request.form.get('typestr')
+    con = dbHelper.sql_connection()
+    dbHelper.insertDataIntoMessages(con,msg, typeStr)
+    con.close()
+    return "true"
 
 if __name__ == "__main__":
     app.run()

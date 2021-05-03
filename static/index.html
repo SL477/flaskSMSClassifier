@@ -12,13 +12,21 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
     </head>
     <body>
-        <p>SMS Classifier</p>
+        <h1>SMS Classifier</h1>
+        <p>This uses the model I made as part of a FreeCodeCamp challenge <a href="https://colab.research.google.com/drive/19jhS_47-0m7Et4vjutHWq9ftKHvPyl62#scrollTo=J9tD9yACG6M9">Colab sheet</a></p>
 
         <fieldset>
             <label for="msg">Test Message:</label>
             <input id="msg" name="msg" type="text" class="form-control"/>
             <button onclick="testTextClassification();" class="btn btn-primary">Test</button>
             <p>Result: <span id="msgResult"></span></p>
+            <label for="typestr">Classification:</label>
+            <select name="typestr" id="typestr" class="form-control">
+                <option disabled selected>--Please Select--</option>
+                <option value="0">Spam</option>
+                <option value="1">Ham</option>
+            </select>
+            <button onclick="insertToDB();" class="btn btn-primary">Add to database</button>
         </fieldset>
 
         <table class="table table-striped table-bordered table-hover">

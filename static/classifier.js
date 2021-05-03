@@ -33,9 +33,19 @@ $( document ).ready(function() {
 function testTextClassification() {
     let msg = $("#msg").val();
     $.post("/classifymessage", {msg: msg}, function(data) {
-        console.log("data",data);
+        console.log("data",data, (data["output"] == "ham").toString());
         //data = JSON.parse(data);
         //console.log("data",data);
         $('#msgResult').text(data["output"] + " " + data["pred"] + "%");
+        
+        $("#typestr").val(data["output"] == "ham"? "1" : "0");
+    });
+}
+
+function insertToDB() {
+    let msg = $("#msg").val();
+    let typestr = $("#typestr").val();
+    $.post("/addtodb", {msg: msg, typestr: typestr}, function(data){
+        getData();
     });
 }
