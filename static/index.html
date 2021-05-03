@@ -12,7 +12,14 @@
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
     </head>
     <body>
-        <p>Test</p>
+        <p>SMS Classifier</p>
+
+        <fieldset>
+            <label for="msg">Test Message:</label>
+            <input id="msg" name="msg" type="text" class="form-control"/>
+            <button onclick="testTextClassification();" class="btn btn-primary">Test</button>
+            <p>Result: <span id="msgResult"></span></p>
+        </fieldset>
 
         <table class="table table-striped table-bordered table-hover">
             <thead>

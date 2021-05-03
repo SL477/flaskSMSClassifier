@@ -21,7 +21,7 @@ def predict_message(message_text):
     if pred > 0.5:
         output = 'ham'
     #return [prediction[0][0], output, message_text]
-    return [pred, output, message_text]
+    return {"pred": "{:.2f}".format(pred), "output":output, "message_text": message_text}
 
 if __name__ == "__main__":
     test_messages1 = ["how are you doing today",

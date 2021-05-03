@@ -29,3 +29,13 @@ $( document ).ready(function() {
     //console.log('Test');
     getData();
 });
+
+function testTextClassification() {
+    let msg = $("#msg").val();
+    $.post("/classifymessage", {msg: msg}, function(data) {
+        console.log("data",data);
+        //data = JSON.parse(data);
+        //console.log("data",data);
+        $('#msgResult').text(data["output"] + " " + data["pred"] + "%");
+    });
+}
