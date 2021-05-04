@@ -1,6 +1,7 @@
 import sqlite3
 from sqlite3 import Error
 import json
+import pandas as pd
 
 def sql_connection():
     """
@@ -63,3 +64,12 @@ def getAllData():
         cursor.execute("SELECT msg.id, msg.msg, msg.type, t.desc FROM messages msg JOIN types t ON msg.type = t.id")
         data = cursor.fetchall()
         return json.dumps(data)
+
+def getMessageTableDataFrame():
+    """
+    Get the messages table as a DataFrame
+    """
+    con = sql_connection()
+    df = pd.read_sql("SELECT msg, type FROM messages", con)
+    con.close()
+    return df
