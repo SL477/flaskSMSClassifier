@@ -2,6 +2,7 @@ from flask import Flask, request, send_from_directory, url_for, redirect, jsonif
 
 import dbHelper
 from textClassifier import predict_message
+import modelmaker
 
 #app = Flask(__name__, static_url_path='')
 app = Flask(__name__)
@@ -42,6 +43,16 @@ def addToDB():
     dbHelper.insertDataIntoMessages(con,msg, typeStr)
     con.close()
     return "true"
+
+@app.route('/retrainmodel', methods=["POST"])
+def retrainModel():
+    """
+    This is to retrain the model
+    """
+    model = modelmaker.createNewModel()
+    stats = modelmaker.evaluateModel(model)
+    modelmaker.saveModel(model, 'smsClassifierModel')
+    return jsonify({'loss': "{:.3f}".format(stats[0]), 'accuracy': "{:.3f}".format(stats[1])})
 
 if __name__ == "__main__":
     app.run()

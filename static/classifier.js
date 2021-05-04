@@ -49,3 +49,10 @@ function insertToDB() {
         getData();
     });
 }
+
+function retrainModel() {
+    $.post("/retrainmodel", function(data){
+        $('#lossStat').text(data.loss);
+        $('#accStat').text(data.accuracy);
+    });
+}
