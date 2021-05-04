@@ -73,3 +73,23 @@ def getMessageTableDataFrame():
     df = pd.read_sql("SELECT msg, type FROM messages", con)
     con.close()
     return df
+
+def updateClassification(msgID, typeBool):
+    """
+    This is to toggle an items classification
+    """
+    con = sql_connection()
+    cursor = con.cursor()
+    cursor.execute("UPDATE messages SET type = ? WHERE id = ?", (typeBool, msgID))
+    con.commit()
+    con.close()
+
+def deleteMessage(msgID):
+    """
+    This is to delete a message from the messages table
+    """
+    con = sql_connection()
+    cursor = con.cursor()
+    cursor.execute("DELETE FROM messages WHERE id = ?", (msgID,))
+    con.commit()
+    con.close()

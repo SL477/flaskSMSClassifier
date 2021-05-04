@@ -18,7 +18,10 @@ function getData() {
                 }
                 ret += '<td>' + element[0] + '</td>';
                 ret += '<td>' + element[1] + '</td>';
-                ret += '<td>' + element[3] + '</td></tr>';
+                ret += '<td>' + element[3] + '</td>';
+                ret += '<td><button onclick="updateMsg(' + element[0] + ',' + (element[2] == "0"? "1" : "0") + ')" class="btn btn-info">Toggle</button></td>';
+                ret += '<td><button onclick="deleteMsg(' + element[0] + ')" class="btn btn-danger">Delete</button>';
+                ret += '</tr>';
             });
             $("#msgTable").append(ret);
         }
@@ -54,5 +57,17 @@ function retrainModel() {
     $.post("/retrainmodel", function(data){
         $('#lossStat').text(data.loss);
         $('#accStat').text(data.accuracy);
+    });
+}
+
+function updateMsg(msgID, typeStr) {
+    $.post("/updatemsg", {msgid: msgID, typestr: typeStr}, function(data) {
+        getData();
+    });
+}
+
+function deleteMsg(msgID) {
+    $.post("/deletemsg", {msgid: msgID}, function(data) {
+        getData()
     });
 }

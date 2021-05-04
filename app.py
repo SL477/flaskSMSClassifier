@@ -54,5 +54,24 @@ def retrainModel():
     modelmaker.saveModel(model, 'smsClassifierModel')
     return jsonify({'loss': "{:.3f}".format(stats[0]), 'accuracy': "{:.3f}".format(stats[1])})
 
+@app.route('/updatemsg', methods=['POST'])
+def updatemsg():
+    """
+    This is to update a message's classification in the database
+    """
+    msgid = int(request.form.get('msgid'))
+    typeStr = int(request.form.get('typestr'))
+    dbHelper.updateClassification(msgid, typeStr)
+    return "true"
+
+@app.route('/deletemsg', methods=['POST'])
+def deletemsg():
+    """
+    Delete message
+    """
+    msgid = int(request.form.get('msgid'))
+    dbHelper.deleteMessage(msgid)
+    return "true"
+
 if __name__ == "__main__":
     app.run()
