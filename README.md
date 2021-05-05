@@ -13,7 +13,7 @@ Put the files into the folder data. Then run setup.py
 
 # Docker
 Build with:
-docker build -t flasksmsclassifier . -f flasksmsclassifier
+docker build -t flasksmsclassifier .
 
 Run with:
 docker run -dp 5000:5000 flasksmsclassifier
