@@ -24,9 +24,10 @@ def createNewModel():
     )
 
     # Get the full dataframe to adapt the text vectorization
-    df_full = pd.concat([df_test, df_train])
-    df_full.pop('type')
-    vectorise_layer.adapt(tf.constant((df_full)))
+    # df_full = pd.concat([df_test, df_train])
+    # df_full.pop('type')
+    # vectorise_layer.adapt(tf.constant((df_full)))
+    vectorise_layer.adapt(tf.constant(df_train['msg']))
 
     # Model
     text_input = tf.keras.Input(shape=(1,), dtype=tf.string)
