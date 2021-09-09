@@ -9,13 +9,13 @@ Based on https://scikit-learn.org/stable/tutorial/text_analytics/working_with_te
 
 #%% Imports
 from os import path
-from app.setup import getTSVDataFrame
+from setup import getTSVDataFrame
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.linear_model import SGDClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import pickle
-import app.dbHelper as dbHelper
+import dbHelper as dbHelper
 
 #%% Grid search cv
 # need to beat 0.9741379310344828% accurancy

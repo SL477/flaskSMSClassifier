@@ -1,1 +1,1 @@
-gunicorn -w 1 app.wsgi
+gunicorn -w 1 wsgi

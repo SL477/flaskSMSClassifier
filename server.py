@@ -7,10 +7,10 @@ This is the Flask server
 """
 #%% Imports
 from flask import Flask, request, url_for, redirect, jsonify
-import app.dbHelper as dbHelper
-from app.load_model import loadmodel
-from app.predictor import predict
-from app.modelmaker import createNewModel
+import dbHelper as dbHelper
+from load_model import loadmodel
+from predictor import predict
+from modelmaker import createNewModel
 
 #%% Routes
 app = Flask(__name__)

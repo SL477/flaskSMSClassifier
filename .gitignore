@@ -1,4 +1,4 @@
 smsClassifierModel/
-__pycache__/
 app/.spyproject/
 model.obj
+__pycache__/
