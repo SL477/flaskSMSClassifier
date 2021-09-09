@@ -1,10 +1,18 @@
-from flask import Flask, request, send_from_directory, url_for, redirect, jsonify
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Sep  9 16:10:11 2021
 
-import dbHelper
-from textClassifier import predict_message
-import modelmaker
+@author: link4
+This is the Flask server
+"""
+#%% Imports
+from flask import Flask, request, url_for, redirect, jsonify
+import dbHelper as dbHelper
+from load_model import loadmodel
+from predictor import predict
+from modelmaker import createNewModel
 
-#app = Flask(__name__, static_url_path='')
+#%% Routes
 app = Flask(__name__)
 
 @app.route('/')
@@ -27,10 +35,12 @@ def getData():
 def getJS():
     return redirect(url_for('static', filename='classifier.js'))
 
-@app.route('/classifymessage', methods=["POST"])
+@app.route('/classifymessage', methods=['POST'])
 def classify_text_message():
     msg = request.form.get('msg')
-    return jsonify(predict_message(msg))
+    mdl = loadmodel()
+    preds = predict(mdl, msg)
+    return jsonify(preds)
 
 @app.route('/addtodb', methods=["POST"])
 def addToDB():
@@ -42,17 +52,7 @@ def addToDB():
     con = dbHelper.sql_connection()
     dbHelper.insertDataIntoMessages(con,msg, typeStr)
     con.close()
-    return "true"
-
-@app.route('/retrainmodel', methods=["POST"])
-def retrainModel():
-    """
-    This is to retrain the model
-    """
-    model = modelmaker.createNewModel()
-    stats = modelmaker.evaluateModel(model)
-    modelmaker.saveModel(model, 'smsClassifierModel')
-    return jsonify({'loss': "{:.3f}".format(stats[0]), 'accuracy': "{:.3f}".format(stats[1])})
+    return jsonify(True)
 
 @app.route('/updatemsg', methods=['POST'])
 def updatemsg():
@@ -62,7 +62,7 @@ def updatemsg():
     msgid = int(request.form.get('msgid'))
     typeStr = int(request.form.get('typestr'))
     dbHelper.updateClassification(msgid, typeStr)
-    return "true"
+    return jsonify(True)
 
 @app.route('/deletemsg', methods=['POST'])
 def deletemsg():
@@ -71,7 +71,17 @@ def deletemsg():
     """
     msgid = int(request.form.get('msgid'))
     dbHelper.deleteMessage(msgid)
-    return "true"
+    return jsonify(True)
 
+# TODO 
+@app.route('/retrainmodel', methods=["POST"])
+def retrainModel():
+    '''
+    This is to retrain the model based on what is in the database
+
+    '''
+    return jsonify({'accuracy': createNewModel()})
+
+#%% Run
 if __name__ == "__main__":
     app.run()

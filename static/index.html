@@ -13,8 +13,7 @@
     </head>
     <body>
         <h1>SMS Classifier</h1>
-        <p>This uses the model I made as part of this <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier">FreeCodeCamp challenge, my </a> <a href="https://colab.research.google.com/drive/19jhS_47-0m7Et4vjutHWq9ftKHvPyl62#scrollTo=J9tD9yACG6M9">Colab sheet</a></p>
-
+        <p>This uses the data from the <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier">FreeCodeCamp SMS classifier challenge</a>, but uses SciKit learn as the model.</p>
         <fieldset>
             <legend>Test the classification of a model</legend>
             <label for="msg">Test Message:</label>
@@ -34,7 +33,6 @@
             <legend>This retrains the model, it can take a little while</legend>
             <button onclick="retrainModel();" class="btn btn-primary">Retrain Model</button>
             <h4>Stats</h4>
-            <p>Loss: <span id="lossStat"></span>%</p>
             <p>Accuracy: <span id="accStat"></span>%</p>
         </fieldset>
 

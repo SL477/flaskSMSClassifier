@@ -11,6 +11,11 @@ https://cdn.freecodecamp.org/project-data/sms/valid-data.tsv
 
 Put the files into the folder data. Then run setup.py
 
+# Run with
+gunicorn -w 1 app.wsgi
+or 
+bash run.sh
+
 # Docker
 Build with:
 docker build -t flasksmsclassifier .

@@ -39,7 +39,7 @@ function testTextClassification() {
         console.log("data",data, (data["output"] == "ham").toString());
         //data = JSON.parse(data);
         //console.log("data",data);
-        $('#msgResult').text(data["output"] + " " + data["pred"] + "%");
+        $('#msgResult').text(data["output"]);
         
         $("#typestr").val(data["output"] == "ham"? "1" : "0");
     });
@@ -55,8 +55,7 @@ function insertToDB() {
 
 function retrainModel() {
     $.post("/retrainmodel", function(data){
-        $('#lossStat').text(data.loss);
-        $('#accStat').text(data.accuracy);
+        $('#accStat').text(parseFloat(data.accuracy).toFixed(2));
     });
 }
 
