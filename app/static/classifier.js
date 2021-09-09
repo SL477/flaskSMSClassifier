@@ -55,8 +55,7 @@ function insertToDB() {
 
 function retrainModel() {
     $.post("/retrainmodel", function(data){
-        $('#lossStat').text(data.loss);
-        $('#accStat').text(data.accuracy);
+        $('#accStat').text(parseFloat(data.accuracy).toFixed(2));
     });
 }
 

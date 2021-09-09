@@ -10,6 +10,7 @@ from flask import Flask, request, send_from_directory, url_for, redirect, jsonif
 import dbHelper
 from load_model import loadmodel
 from predictor import predict
+from modelmaker import createNewModel
 
 #%% Routes
 app = Flask(__name__)
@@ -72,7 +73,14 @@ def deletemsg():
     dbHelper.deleteMessage(msgid)
     return jsonify(True)
 
-# TODO @app.route('/retrainmodel', methods=["POST"])
+# TODO 
+@app.route('/retrainmodel', methods=["POST"])
+def retrainModel():
+    '''
+    This is to retrain the model based on what is in the database
+
+    '''
+    return jsonify({'accuracy': createNewModel()})
 
 #%% Run
 if __name__ == "__main__":
