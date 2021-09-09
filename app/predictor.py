@@ -12,14 +12,19 @@ def predict(model, msg):
     Parameters
     ----------
     model : pass in the model.
-    msg : The message array.
+    msg : The message string.
 
     Returns
     -------
-    Array, False is spam, true is not spam
+    object, output (ham/spam) and the original message (message_text)
 
     '''
-    return model.predict(msg)
+    #return model.predict(msg)
+    res = model.predict([msg])
+    output = 'ham'
+    if not res:
+        output = 'spam'
+    return {"output": output, "message_text": msg}
 
 if __name__ == '__main__':
     from load_model import loadmodel
@@ -32,7 +37,10 @@ if __name__ == '__main__':
                    "i'll bring it tomorrow. don't forget the milk.",
                    "wow, is your arm alright. that happened to me one time too"
                   ]
-    preds = predict(mdl, test_messages1)
-    for i in range(len(test_messages1)):
-        print(test_messages1[i], preds[i])
+    #preds = predict(mdl, test_messages1)
+    #for i in range(len(test_messages1)):
+    #   print(test_messages1[i], preds[i])
+    
+    for m in test_messages1:
+        print(predict(mdl, m))
         

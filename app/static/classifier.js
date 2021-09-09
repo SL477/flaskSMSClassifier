@@ -39,7 +39,7 @@ function testTextClassification() {
         console.log("data",data, (data["output"] == "ham").toString());
         //data = JSON.parse(data);
         //console.log("data",data);
-        $('#msgResult').text(data["output"] + " " + data["pred"] + "%");
+        $('#msgResult').text(data["output"]);
         
         $("#typestr").val(data["output"] == "ham"? "1" : "0");
     });
