@@ -3,6 +3,8 @@
 Created on Thu Sep  9 15:00:25 2021
 
 @author: link4
+
+Based on https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
 """
 from os import path
 from setup import getTSVDataFrame
@@ -96,3 +98,4 @@ print('confusion matrix', confusion_matrix(y_test, y_pred))
 #%% Save model
 filehandler = open("model.obj", "wb")
 pickle.dump(pipeline, filehandler)
+filehandler.close()
