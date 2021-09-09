@@ -6,11 +6,11 @@ Created on Thu Sep  9 16:10:11 2021
 This is the Flask server
 """
 #%% Imports
-from flask import Flask, request, send_from_directory, url_for, redirect, jsonify
-import dbHelper
-from load_model import loadmodel
-from predictor import predict
-from modelmaker import createNewModel
+from flask import Flask, request, url_for, redirect, jsonify
+import app.dbHelper as dbHelper
+from app.load_model import loadmodel
+from app.predictor import predict
+from app.modelmaker import createNewModel
 
 #%% Routes
 app = Flask(__name__)

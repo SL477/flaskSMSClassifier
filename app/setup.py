@@ -1,5 +1,5 @@
 # This is to run the first time setup
-import dbHelper
+import app.dbHelper as dbHelper
 import pandas as pd
 from os import path
 
