@@ -1,5 +1,6 @@
 # flaskSMSClassifier
  Flask SMS Classifier
+ ![Screenshot](https://link477.com/dataScience/SMSClassifier.JPG)
 
 # Setup
 Install python packages from requirements.txt
