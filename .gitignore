@@ -2,3 +2,4 @@ smsClassifierModel/
 app/.spyproject/
 model.obj
 __pycache__/
+Pipfile.lock
