@@ -12,8 +12,9 @@ pip install requirements.txt
 ```
 
 Get data from:
-[Train Data](https://cdn.freecodecamp.org/project-data/sms/train-data.tsv)
-[Validation Data](https://cdn.freecodecamp.org/project-data/sms/valid-data.tsv)
+
+- [Train Data](https://cdn.freecodecamp.org/project-data/sms/train-data.tsv)
+- [Validation Data](https://cdn.freecodecamp.org/project-data/sms/valid-data.tsv)
 
 Put the files into the folder data. Then run setup.py
 
