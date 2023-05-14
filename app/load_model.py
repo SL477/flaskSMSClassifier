@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Sep  9 15:52:16 2021
-
-@author: link4
-"""
+"""Get the model"""
 import pickle
-def loadmodel(filename='model.obj'):
-    '''
+
+
+def load_model(filename: str = 'model.obj'):
+    """Get the trained model
+
     Parameters
     ----------
     filename : TYPE, optional
@@ -14,9 +12,7 @@ def loadmodel(filename='model.obj'):
 
     Returns
     -------
-    The model as a python object
-
-    '''
+    The model as a python object"""
     file = open(filename, "rb")
     model = pickle.load(file)
     file.close()

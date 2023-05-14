@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="utf-8"/>
         <title>SMS Text Classifier</title>
         <link rel="stylesheet" href="myStyle.css"/>
         <link rel="icon" href="link477.png"/>
-        <meta charset="utf-8"/>
         <meta content="SMS Classifier"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
         <h1>SMS Classifier</h1>
@@ -18,7 +18,7 @@
             <legend>Test the classification of a model</legend>
             <label for="msg">Test Message:</label>
             <input id="msg" name="msg" type="text" class="form-control"/>
-            <button onclick="testTextClassification();" class="btn btn-primary">Test</button>
+            <button onclick="testTextClassification();" class="btn btn-primary" type="button">Test</button>
             <p>Result: <span id="msgResult"></span></p>
             <label for="typestr">Classification:</label>
             <select name="typestr" id="typestr" class="form-control">
@@ -26,12 +26,12 @@
                 <option value="0">Spam</option>
                 <option value="1">Ham</option>
             </select>
-            <button onclick="insertToDB();" class="btn btn-primary">Add to database</button>
+            <button onclick="insertToDB();" class="btn btn-primary" type="button">Add to database</button>
         </fieldset>
 
         <fieldset>
             <legend>This retrains the model, it can take a little while</legend>
-            <button onclick="retrainModel();" class="btn btn-primary">Retrain Model</button>
+            <button onclick="retrainModel();" class="btn btn-primary" type="button">Retrain Model</button>
             <h4>Stats</h4>
             <p>Accuracy: <span id="accStat"></span>%</p>
         </fieldset>
@@ -59,7 +59,6 @@
             </thead>
             <tbody id="msgTable"></tbody>
         </table>
-
         <script src="classifier.js"></script>
     </body>
 </html>
