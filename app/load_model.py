@@ -1,5 +1,6 @@
 """Get the model"""
 import pickle
+from .modelmaker import createNewModel
 
 
 def load_model(filename: str = 'model.obj'):
@@ -13,7 +14,11 @@ def load_model(filename: str = 'model.obj'):
     Returns
     -------
     The model as a python object"""
-    file = open(filename, "rb")
-    model = pickle.load(file)
-    file.close()
+    try:
+        with open(filename, "rb") as file:
+            model = pickle.load(file)
+    except:
+        createNewModel(filename)
+        with open(filename, "rb") as file:
+            model = pickle.load(file)
     return model
