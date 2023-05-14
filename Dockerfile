@@ -11,4 +11,4 @@ COPY . .
 
 # Run the app
 #CMD [ "python3", "-m", "flask", "run", "--host=0.0.0.0" ]
-CMD [ "python3", "-m", "gunicorn", "--bind", "0.0.0.0:5000","-w", "1", "wsgi" ]
+CMD [ "python3", "-m", "gunicorn", "--bind", "0.0.0.0:5000","-w", "1", "app.wsgi" ]

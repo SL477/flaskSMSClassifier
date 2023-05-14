@@ -12,21 +12,16 @@ pip install requirements.txt
 ```
 
 Get data from:
-[Train Data](https://cdn.freecodecamp.org/project-data/sms/train-data.tsv)
-[Validation Data](https://cdn.freecodecamp.org/project-data/sms/valid-data.tsv)
+
+- [Train Data](https://cdn.freecodecamp.org/project-data/sms/train-data.tsv)
+- [Validation Data](https://cdn.freecodecamp.org/project-data/sms/valid-data.tsv)
 
 Put the files into the folder data. Then run setup.py
 
 ## Run with
 
 ```bash
-gunicorn -w 1 app.wsgi
-```
-
-or
-
-```bash
-bash run.sh
+gunicorn --bind 0.0.0.0:5000 -w 1 app.wsgi
 ```
 
 ## Docker
